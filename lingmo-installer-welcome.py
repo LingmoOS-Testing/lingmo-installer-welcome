@@ -36,25 +36,21 @@ class WelcomeWindow(Gtk.Window):
             [
                 "lingmo-core",
                 "Install Lingmo OS",
-                "Install Lingmo OS on your disk",
                 ["calamares"],
             ],
             [
                 "web-browser",
                 "Open Browser",
-                "Use the system's default browser",
                 ["firefox"],
             ],
             [
                 "disk-baob",
                 "Disk Partitioning",
-                "Use the disk partitioning tool to partition the disk",
                 ["gparted"],
             ],
             [
                 "terminal",
                 "Terminal",
-                "Open the terminal",
                 ["lingmo-terminal"],
             ],
         ]
@@ -85,13 +81,9 @@ class WelcomeWindow(Gtk.Window):
                 color: #ffffff;
             }
             label.header {
-                font-family: Sans;
                 font-size: 35px;
                 font-weight: bold;
                 margin-bottom: 15px;
-            }
-            label.title {
-                font-weight: bold;
             }
         """
         css_provider.load_from_data(css.encode("utf-8"))
@@ -102,7 +94,7 @@ class WelcomeWindow(Gtk.Window):
             screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
 
-    def create_button(self, icon_name, title, subtitle, command):
+    def create_button(self, icon_name, title, command):
         button = Gtk.Button()
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         button.add(box)
@@ -111,19 +103,11 @@ class WelcomeWindow(Gtk.Window):
         icon.set_pixel_size(48)
 
         box.pack_start(icon, False, False, 0)
-        label_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
 
         title_label = Gtk.Label(label=title)
-        title_label.get_style_context().add_class("title")
         title_label.set_xalign(0)
 
-        subtitle_label = Gtk.Label(label=subtitle)
-        subtitle_label.set_xalign(0)
-
-        label_box.pack_start(title_label, False, False, 0)
-        label_box.pack_start(subtitle_label, False, False, 0)
-
-        box.pack_start(label_box, True, True, 0)
+        box.pack_start(title_label, True, True, 0)
         button.connect("clicked", lambda widget: subprocess.run(command))
         return button
 
