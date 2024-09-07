@@ -16,12 +16,21 @@ class WelcomeWindow(Gtk.Window):
 
         self.apply_css()
 
-        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
-        self.add(vbox)
+        main_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
+        self.add(main_box)
 
+        left_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+        main_box.pack_start(left_box, False, False, 0)
+
+        main_icon = Gtk.Image.new_from_icon_name("applications-system", Gtk.IconSize.DIALOG)
+        main_icon.set_pixel_size(24)
+        
         header_label = Gtk.Label(label="Lingmo OS Installer")
         header_label.get_style_context().add_class("header")
-        vbox.pack_start(header_label, False, False, 0)
+        left_box.pack_start(main_icon, False, False, 0)
+        left_box.pack_start(header_label, False, False, 0)
+        button_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=20)
+        main_box.pack_start(button_box, True, True, 0)
 
         buttons = [
             [
@@ -44,7 +53,7 @@ class WelcomeWindow(Gtk.Window):
             ],
         ]
         for i in buttons:
-            vbox.pack_start(self.create_button(*i), True, True, 0)
+            button_box.pack_start(self.create_button(*i), True, True, 0)
 
         self.connect("delete-event", lambda widget, event: True)
 
