@@ -23,7 +23,7 @@ class WelcomeWindow(Gtk.Window):
         main_box.pack_start(left_box, False, False, 0)
 
         main_icon = Gtk.Image.new_from_icon_name("applications-development", Gtk.IconSize.DIALOG)
-        main_icon.set_pixel_size(24)
+        main_icon.set_pixel_size(32)
         main_icon.set_halign(Gtk.Align.START)
         
         header_label = Gtk.Label(label="Welcome")
@@ -99,6 +99,13 @@ class WelcomeWindow(Gtk.Window):
                 font-size: 35px;
                 font-weight: bold;
                 margin-bottom: 15px;
+            }
+            .custom-dropdown {
+                background-color: #282828;
+                color: #ffffff;
+                border: none;
+                padding: 5px;
+                border-radius: 5px;
             }
         """
         css_provider.load_from_data(css.encode("utf-8"))
