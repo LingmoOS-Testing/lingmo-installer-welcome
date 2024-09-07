@@ -51,6 +51,12 @@ class WelcomeWindow(Gtk.Window):
                 "Use the disk partitioning tool to partition the disk",
                 ["gparted"],
             ],
+            [
+                "terminal",
+                "Terminal",
+                "Open the terminal",
+                ["lingmo-terminal"],
+            ],
         ]
         for i in buttons:
             button_box.pack_start(self.create_button(*i), True, True, 0)
