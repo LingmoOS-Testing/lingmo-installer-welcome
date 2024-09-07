@@ -12,6 +12,7 @@ class WelcomeWindow(Gtk.Window):
         self.set_decorated(False)
         self.set_resizable(False)
         self.set_default_size(500, 450)
+        self.set_position(Gtk.WindowPosition.CENTER)
 
         self.apply_css()
 
@@ -51,10 +52,10 @@ class WelcomeWindow(Gtk.Window):
         css_provider = Gtk.CssProvider()
         css = """
             window {
-                background-color: #2e2f31;
+                background-color: #1f1f1f;
             }
             button {
-                background-color: #2e2f31;
+                background-color: #282828;
                 border: none;
                 border-radius: 5px;
                 padding: 10px;
@@ -64,12 +65,12 @@ class WelcomeWindow(Gtk.Window):
                 background-color: #535353;
             }
             label {
-                font-family: Dejavu Sans;
+                font-family: Sans;
                 font-size: 18px;
                 color: #ffffff;
             }
             label.header {
-                font-family: Dejavu Sans;
+                font-family: Sans;
                 font-size: 35px;
                 font-weight: bold;
                 margin-bottom: 15px;
