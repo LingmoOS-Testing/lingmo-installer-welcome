@@ -8,10 +8,10 @@ from gi.repository import Gtk, Gdk
 class WelcomeWindow(Gtk.Window):
     def __init__(self):
         super().__init__(title="Welcome")
-        self.set_border_width(60)
+        self.set_border_width(100)
         self.set_decorated(False)
         self.set_resizable(False)
-        self.set_default_size(500, 450)
+        self.set_default_size(900, 500)
         self.set_position(Gtk.WindowPosition.CENTER)
 
         self.apply_css()
@@ -24,12 +24,14 @@ class WelcomeWindow(Gtk.Window):
 
         main_icon = Gtk.Image.new_from_icon_name("applications-system", Gtk.IconSize.DIALOG)
         main_icon.set_pixel_size(24)
+        main_icon.set_halign(Gtk.Align.START)
         
         header_label = Gtk.Label(label="Lingmo OS Installer")
         header_label.get_style_context().add_class("header")
         left_box.pack_start(main_icon, False, False, 0)
         left_box.pack_start(header_label, False, False, 0)
-        button_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=20)
+        left_box.set_margin_top(60)
+        button_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
         main_box.pack_start(button_box, True, True, 0)
 
         buttons = [
@@ -100,7 +102,7 @@ class WelcomeWindow(Gtk.Window):
         button.add(box)
 
         icon = Gtk.Image.new_from_icon_name(icon_name, Gtk.IconSize.DIALOG)
-        icon.set_pixel_size(48)
+        icon.set_pixel_size(32)
 
         box.pack_start(icon, False, False, 0)
 
