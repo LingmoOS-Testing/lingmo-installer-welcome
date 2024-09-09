@@ -59,19 +59,6 @@ class WelcomeWindow(Gtk.Window):
         for i in buttons:
             button_box.pack_start(self.create_button(*i), True, True, 0)
 
-        bottom_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        bottom_box.set_halign(Gtk.Align.START)
-        bottom_box.set_valign(Gtk.Align.END)
-
-        language_dropdown = Gtk.ComboBoxText()
-        language_dropdown.append_text("English")
-        language_dropdown.append_text("中文")
-        language_dropdown.set_active(0)
-        language_dropdown.connect("changed", lambda combo: print(combo.get_active_text()))
-        language_dropdown.get_style_context().add_class("custom-dropdown")
-        bottom_box.pack_start(language_dropdown, False, False, 10)
-        left_box.pack_start(bottom_box, False, False, 10)
-
         self.connect("delete-event", lambda widget, event: True)
 
     def apply_css(self):
